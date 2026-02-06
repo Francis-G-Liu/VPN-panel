@@ -50,7 +50,7 @@
 
 ```bash
 # 下载安装脚本
-curl -O https://raw.githubusercontent.com/your-repo/ai-vpn/main/install.sh
+curl -O https://raw.githubusercontent.com/Francis-G-Liu/VPN-panel/main/install.sh
 
 # 运行安装
 sudo bash install.sh
@@ -71,8 +71,8 @@ sudo bash install.sh
 #### 1. 克隆项目
 
 ```bash
-git clone https://github.com/your-repo/ai-vpn.git
-cd ai-vpn
+git clone https://github.com/Francis-G-Liu/VPN-panel.git
+cd VPN-panel
 ```
 
 #### 2. 创建虚拟环境
@@ -236,8 +236,8 @@ aivpn uninstall  # 卸载系统
 
 ```bash
 # Fork 项目
-git clone https://github.com/your-username/ai-vpn.git
-cd ai-vpn
+git clone https://github.com/Francis-G-Liu/VPN-panel.git
+cd VPN-panel
 
 # 创建分支
 git checkout -b feature/your-feature
@@ -268,8 +268,8 @@ git push origin feature/your-feature
 
 ## 📧 联系方式
 
-- **Issues**: [GitHub Issues](https://github.com/your-repo/ai-vpn/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-repo/ai-vpn/discussions)
+- **Issues**: [GitHub Issues](https://github.com/Francis-G-Liu/VPN-panel/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/Francis-G-Liu/VPN-panel/discussions)
 
 ---
 
