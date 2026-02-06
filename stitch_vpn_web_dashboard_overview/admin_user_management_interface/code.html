@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin User Management Interface</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#0d121b] dark:text-gray-100 min-h-screen">
+<div class="flex h-full grow flex-col">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e7ebf3] dark:border-gray-800 bg-white dark:bg-[#1a2133] px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-6">
+<span class="material-symbols-outlined text-3xl">vpn_lock</span>
+</div>
+<h2 class="text-[#0d121b] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">VPN Admin</h2>
+</div>
+<div class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+<div class="text-[#4c669a] flex border-none bg-[#e7ebf3] dark:bg-gray-800 items-center justify-center pl-4 rounded-l-xl border-r-0">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#0d121b] dark:text-white focus:outline-0 focus:ring-0 border-none bg-[#e7ebf3] dark:bg-gray-800 focus:border-none h-full placeholder:text-[#4c669a] px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal" placeholder="Global search..." value=""/>
+</div>
+</div>
+</div>
+<div class="flex flex-1 justify-end gap-8 items-center">
+<nav class="hidden lg:flex items-center gap-6">
+<a class="text-[#4c669a] hover:text-primary dark:text-gray-400 dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-bold leading-normal" href="#">Users</a>
+<a class="text-[#4c669a] hover:text-primary dark:text-gray-400 dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Nodes</a>
+<a class="text-[#4c669a] hover:text-primary dark:text-gray-400 dark:hover:text-primary text-sm font-medium leading-normal transition-colors" href="#">Analytics</a>
+</nav>
+<div class="flex gap-2">
+<button class="flex cursor-pointer items-center justify-center rounded-xl h-10 w-10 bg-[#e7ebf3] dark:bg-gray-800 text-[#0d121b] dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex cursor-pointer items-center justify-center rounded-xl h-10 w-10 bg-[#e7ebf3] dark:bg-gray-800 text-[#0d121b] dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="Admin profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA44oheQke9CYi09DpJfiSSbh4Tay-m754j9JnsZknf5lWRLnsL1s9MaR0KyWjcbqrVdooSiBEpXk-FUUikoji3CP01jQNIZCmm7ww9MLmsiQUfdGJsdnu_VTB-yHVJFjI7o1NHcuqMerPZUv3RuPAtP5iWGMyFRdcC0-RLODoA7-_QxwtBgoOtUupwbeGoaUg8L2w0axACqMlIVdLehtFbBZIM7UiPSRX7qoy7WYJfXe9rg3L-Krxadh5-EfCe6PQviKD5Bf-yG7E");'></div>
+</div>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- SideNavBar -->
+<aside class="hidden md:flex w-64 flex-col justify-between border-r border-[#e7ebf3] dark:border-gray-800 bg-white dark:bg-[#1a2133] p-4">
+<div class="flex flex-col gap-6">
+<div class="flex flex-col px-3">
+<h3 class="text-[#4c669a] text-[11px] uppercase tracking-wider font-bold mb-4">Main Menu</h3>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 text-[#4c669a] hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-sm font-medium">Overview</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-xl bg-primary/10 text-primary transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">group</span>
+<p class="text-sm font-bold">User Management</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#4c669a] hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">dns</span>
+<p class="text-sm font-medium">Server Logistics</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#4c669a] hover:text-primary dark:text-gray-400 dark:hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">insights</span>
+<p class="text-sm font-medium">AI Analytics</p>
+</a>
+</div>
+</div>
+<div class="flex flex-col px-3">
+<h3 class="text-[#4c669a] text-[11px] uppercase tracking-wider font-bold mb-4">Operations</h3>
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 text-[#4c669a] hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">payments</span>
+<p class="text-sm font-medium">Billing</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-[#4c669a] hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+<p class="text-sm font-medium">Support Tickets</p>
+</a>
+</div>
+</div>
+</div>
+<div class="p-3 bg-primary/5 rounded-xl border border-primary/10">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">cloud_done</span>
+<div class="flex flex-col">
+<p class="text-xs font-bold text-primary">System Healthy</p>
+<p class="text-[10px] text-[#4c669a]">All nodes operational</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto bg-background-light dark:bg-background-dark">
+<div class="max-w-6xl mx-auto p-8">
+<!-- PageHeading -->
+<div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+<div class="flex flex-col gap-1">
+<h1 class="text-[#0d121b] dark:text-white text-3xl font-black leading-tight tracking-tight">User Management</h1>
+<p class="text-[#4c669a] dark:text-gray-400 text-sm">Manage user accounts, traffic quotas, and network access status.</p>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-xl font-bold text-sm transition-all shadow-lg shadow-primary/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">person_add</span>
+                            Create New User
+                        </button>
+</div>
+<!-- Stats -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#1a2133] border border-[#e7ebf3] dark:border-gray-800 shadow-sm">
+<div class="flex items-center justify-between">
+<p class="text-[#4c669a] dark:text-gray-400 text-sm font-medium">Total Active Subscriptions</p>
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg text-xl">verified_user</span>
+</div>
+<p class="text-[#0d121b] dark:text-white tracking-tight text-3xl font-bold">12,482</p>
+<p class="text-[#07883b] text-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> +5.2% <span class="text-[#4c669a] dark:text-gray-500 font-normal">vs last month</span>
+</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#1a2133] border border-[#e7ebf3] dark:border-gray-800 shadow-sm">
+<div class="flex items-center justify-between">
+<p class="text-[#4c669a] dark:text-gray-400 text-sm font-medium">Traffic Consumed Today</p>
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg text-xl">database</span>
+</div>
+<p class="text-[#0d121b] dark:text-white tracking-tight text-3xl font-bold">4.2 TB</p>
+<p class="text-[#07883b] text-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> +1.8% <span class="text-[#4c669a] dark:text-gray-500 font-normal">avg network load</span>
+</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#1a2133] border border-[#e7ebf3] dark:border-gray-800 shadow-sm">
+<div class="flex items-center justify-between">
+<p class="text-[#4c669a] dark:text-gray-400 text-sm font-medium">New Users Today</p>
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg text-xl">person_add_alt</span>
+</div>
+<p class="text-[#0d121b] dark:text-white tracking-tight text-3xl font-bold">142</p>
+<p class="text-[#07883b] text-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">trending_up</span> +12% <span class="text-[#4c669a] dark:text-gray-500 font-normal">peak hours</span>
+</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-[#1a2133] border border-[#e7ebf3] dark:border-gray-800 shadow-sm">
+<div class="flex items-center justify-between">
+<p class="text-[#4c669a] dark:text-gray-400 text-sm font-medium">Active Incidents</p>
+<span class="material-symbols-outlined text-orange-500 bg-orange-500/10 p-2 rounded-lg text-xl">warning</span>
+</div>
+<p class="text-[#0d121b] dark:text-white tracking-tight text-3xl font-bold">2</p>
+<p class="text-orange-500 text-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">error</span> Node Latency <span class="text-[#4c669a] dark:text-gray-500 font-normal">US-East</span>
+</p>
+</div>
+</div>
+<!-- SearchBar & Filter -->
+<div class="bg-white dark:bg-[#1a2133] p-4 rounded-xl border border-[#e7ebf3] dark:border-gray-800 mb-6 flex flex-col md:flex-row gap-4 items-center">
+<div class="flex-1 w-full">
+<label class="flex flex-col w-full h-11">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full border border-[#e7ebf3] dark:border-gray-700">
+<div class="text-[#4c669a] flex bg-[#f8f9fc] dark:bg-gray-800/50 items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 border-none bg-[#f8f9fc] dark:bg-gray-800/50 text-[#0d121b] dark:text-white focus:ring-0 placeholder:text-[#4c669a] px-4 rounded-r-lg text-sm" placeholder="Search users by ID, email, or IP address..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex items-center gap-2 w-full md:w-auto">
+<button class="flex items-center justify-center gap-2 bg-[#f8f9fc] dark:bg-gray-800 border border-[#e7ebf3] dark:border-gray-700 px-4 h-11 rounded-lg text-sm font-medium text-[#4c669a] dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined text-lg">filter_list</span>
+                                Filters
+                            </button>
+<button class="flex items-center justify-center gap-2 bg-[#f8f9fc] dark:bg-gray-800 border border-[#e7ebf3] dark:border-gray-700 px-4 h-11 rounded-lg text-sm font-medium text-[#4c669a] dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined text-lg">download</span>
+                                Export
+                            </button>
+</div>
+</div>
+<!-- User Table -->
+<div class="bg-white dark:bg-[#1a2133] rounded-xl border border-[#e7ebf3] dark:border-gray-800 shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-[#f8f9fc] dark:bg-gray-800/50 border-b border-[#e7ebf3] dark:border-gray-700">
+<th class="px-6 py-4 text-xs font-bold text-[#4c669a] dark:text-gray-400 uppercase tracking-wider">User ID / Email</th>
+<th class="px-6 py-4 text-xs font-bold text-[#4c669a] dark:text-gray-400 uppercase tracking-wider">Remaining Traffic</th>
+<th class="px-6 py-4 text-xs font-bold text-[#4c669a] dark:text-gray-400 uppercase tracking-wider">Expiry Date</th>
+<th class="px-6 py-4 text-xs font-bold text-[#4c669a] dark:text-gray-400 uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-xs font-bold text-[#4c669a] dark:text-gray-400 uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#e7ebf3] dark:divide-gray-800">
+<!-- Row 1 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-sm text-[#0d121b] dark:text-white">user_88291</span>
+<span class="text-xs text-[#4c669a] dark:text-gray-400">alex.smith@example.com</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col gap-1.5 w-full max-w-[120px]">
+<div class="flex justify-between text-[10px] font-bold text-[#4c669a]">
+<span>45.2 GB</span>
+<span>100 GB</span>
+</div>
+<div class="w-full bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 45%;"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-[#0d121b] dark:text-gray-300">Oct 24, 2024</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                                                Active
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 text-[#4c669a] hover:text-primary hover:bg-primary/10 rounded-lg transition-all" title="View Logs">
+<span class="material-symbols-outlined text-xl">history</span>
+</button>
+<button class="p-2 text-[#4c669a] hover:text-red-600 hover:bg-red-50 rounded-lg transition-all" title="Ban User">
+<span class="material-symbols-outlined text-xl">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-sm text-[#0d121b] dark:text-white">user_33104</span>
+<span class="text-xs text-[#4c669a] dark:text-gray-400">sarah.j@techcorp.io</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col gap-1.5 w-full max-w-[120px]">
+<div class="flex justify-between text-[10px] font-bold text-[#4c669a]">
+<span>2.1 GB</span>
+<span>50 GB</span>
+</div>
+<div class="w-full bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 4%;"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-[#0d121b] dark:text-gray-300">Nov 12, 2024</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                                                Active
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 text-[#4c669a] hover:text-primary hover:bg-primary/10 rounded-lg transition-all">
+<span class="material-symbols-outlined text-xl">history</span>
+</button>
+<button class="p-2 text-[#4c669a] hover:text-red-600 hover:bg-red-50 rounded-lg transition-all">
+<span class="material-symbols-outlined text-xl">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30 transition-colors">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-sm text-[#0d121b] dark:text-white">user_11092</span>
+<span class="text-xs text-[#4c669a] dark:text-gray-400">m.rossi@provider.net</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<div class="flex flex-col gap-1.5 w-full max-w-[120px]">
+<div class="flex justify-between text-[10px] font-bold text-red-500">
+<span>49.8 GB</span>
+<span>50 GB</span>
+</div>
+<div class="w-full bg-gray-200 dark:bg-gray-700 h-1.5 rounded-full overflow-hidden">
+<div class="bg-red-500 h-full rounded-full" style="width: 98%;"></div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-sm text-[#0d121b] dark:text-gray-300">Expired</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-gray-100 text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+                                                Offline
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 text-[#4c669a] hover:text-primary hover:bg-primary/10 rounded-lg transition-all">
+<span class="material-symbols-outlined text-xl">history</span>
+</button>
+<button class="p-2 text-[#4c669a] hover:text-red-600 hover:bg-red-50 rounded-lg transition-all">
+<span class="material-symbols-outlined text-xl">block</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-gray-50 dark:hover:bg-gray-800/30 transition-colors opacity-60 grayscale-[0.5]">
+<td class="px-6 py-4">
+<div class="flex flex-col">
+<span class="font-bold text-sm text-[#0d121b] dark:text-white line-through">user_99210</span>
+<span class="text-xs text-[#4c669a] dark:text-gray-400">banned_account@spam.com</span>
+</div>
+</td>
+<td class="px-6 py-4">
+<span class="text-xs text-[#4c669a]">N/A</span>
+</td>
+<td class="px-6 py-4 text-sm text-[#0d121b] dark:text-gray-300">-</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400">
+                                                Banned
+                                            </span>
+</td>
+<td class="px-6 py-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="p-2 text-[#4c669a] hover:text-primary hover:bg-primary/10 rounded-lg transition-all">
+<span class="material-symbols-outlined text-xl">history</span>
+</button>
+<button class="p-2 text-primary hover:bg-primary/10 rounded-lg transition-all" title="Unban User">
+<span class="material-symbols-outlined text-xl">settings_backup_restore</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-6 py-4 bg-[#f8f9fc] dark:bg-gray-800/30 border-t border-[#e7ebf3] dark:border-gray-700 flex items-center justify-between">
+<span class="text-sm text-[#4c669a] dark:text-gray-400">Showing 1-4 of 12,482 users</span>
+<div class="flex gap-2">
+<button class="px-3 py-1 text-sm font-medium border border-[#e7ebf3] dark:border-gray-700 rounded bg-white dark:bg-gray-800 text-[#4c669a] hover:bg-gray-50 disabled:opacity-50" disabled="">Previous</button>
+<button class="px-3 py-1 text-sm font-medium border border-[#e7ebf3] dark:border-gray-700 rounded bg-white dark:bg-gray-800 text-[#4c669a] hover:bg-gray-50">Next</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

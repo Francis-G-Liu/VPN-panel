@@ -1,0 +1,19 @@
+[Unit]
+Description=VPN Node Status Reporter
+After=network.target
+
+[Service]
+Type=simple
+User=vpnagent
+WorkingDirectory=/opt/vpn-agent
+ExecStart=/usr/bin/python3 /opt/vpn-agent/node_reporter.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# 环境变量配置
+EnvironmentFile=/opt/vpn-agent/.env
+
+[Install]
+WantedBy=multi-user.target

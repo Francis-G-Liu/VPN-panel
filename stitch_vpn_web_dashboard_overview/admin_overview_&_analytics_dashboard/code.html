@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>VPN Admin Overview &amp; Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#0d121b] dark:text-white transition-colors duration-200">
+<div class="flex h-screen overflow-hidden">
+<!-- Sidebar -->
+<aside class="w-64 flex-shrink-0 border-r border-[#e7ebf3] dark:border-white/10 bg-white dark:bg-background-dark flex flex-col justify-between p-6">
+<div class="flex flex-col gap-8">
+<div class="flex items-center gap-3">
+<div class="bg-primary rounded-lg p-2 flex items-center justify-center text-white">
+<span class="material-symbols-outlined">security</span>
+</div>
+<div>
+<h1 class="text-[#0d121b] dark:text-white text-lg font-bold leading-tight">VPN Admin</h1>
+<p class="text-[#4c669a] dark:text-[#8ba3cf] text-xs font-medium">Enterprise Suite</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-primary/10 text-primary font-semibold" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#4c669a] dark:text-[#8ba3cf] hover:bg-gray-100 dark:hover:bg-white/5 font-medium transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="text-sm">Users</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#4c669a] dark:text-[#8ba3cf] hover:bg-gray-100 dark:hover:bg-white/5 font-medium transition-all" href="#">
+<span class="material-symbols-outlined">dns</span>
+<span class="text-sm">Nodes</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#4c669a] dark:text-[#8ba3cf] hover:bg-gray-100 dark:hover:bg-white/5 font-medium transition-all" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-sm">AI Analysis</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-[#4c669a] dark:text-[#8ba3cf] hover:bg-gray-100 dark:hover:bg-white/5 font-medium transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-sm">Settings</span>
+</a>
+</nav>
+</div>
+<div class="flex items-center gap-3 pt-6 border-t border-[#e7ebf3] dark:border-white/10">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Profile picture of a professional admin user" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB0h_xTuRycCjHMVyapR1A2l5QevYmI5GhYXYV9uXVCkWyCqDnX6p0J7jnU9cSgaYEBsol2UybBpdV23E16J0qs0l-18P72W_SdskPHwfJLebyOO7WqVsWtCxhYFqkKzFkddtrJyeuizYsPSTrzGuxB4HODhv1GAlsMMeWGiSbEozS02JusIkwm5Nfp1Zb-Y42k0_jUQ5PQeR0iYLpCGDqr_PbDGemuvhnzgztf1Gl_7KVYCCqH9darGDWB9NG9XMz74Ng52Aol9d0");'></div>
+<div class="flex flex-col">
+<p class="text-[#0d121b] dark:text-white text-sm font-semibold">Alex Rivera</p>
+<p class="text-[#4c669a] dark:text-[#8ba3cf] text-xs">Super Admin</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col overflow-y-auto">
+<!-- Header -->
+<header class="flex items-center justify-between px-10 py-4 bg-white dark:bg-background-dark border-b border-[#e7ebf3] dark:border-white/10 sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<div class="flex w-72 items-stretch rounded-xl h-10 bg-[#f6f6f8] dark:bg-white/5">
+<div class="text-[#4c669a] flex items-center justify-center pl-4">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="w-full bg-transparent border-none focus:ring-0 text-[#0d121b] dark:text-white placeholder:text-[#4c669a] text-sm px-4" placeholder="Search infrastructure..."/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center rounded-xl size-10 bg-[#f6f6f8] dark:bg-white/5 text-[#0d121b] dark:text-white hover:bg-gray-200 dark:hover:bg-white/10">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="h-6 w-[1px] bg-[#e7ebf3] dark:bg-white/10"></div>
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+                        Deploy Node
+                    </button>
+</div>
+</header>
+<div class="p-10 space-y-8">
+<!-- Page Title -->
+<div>
+<h2 class="text-[#0d121b] dark:text-white text-4xl font-black tracking-tight">Platform Health</h2>
+<p class="text-[#4c669a] dark:text-[#8ba3cf] text-lg mt-1">Real-time system overview and AI diagnostics</p>
+</div>
+<!-- KPI Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white dark:bg-background-dark p-6 rounded-xl border border-[#e7ebf3] dark:border-white/10 shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<p class="text-[#4c669a] dark:text-[#8ba3cf] text-sm font-medium uppercase tracking-wider">Total Revenue</p>
+<span class="material-symbols-outlined text-green-500">trending_up</span>
+</div>
+<p class="text-3xl font-bold text-[#0d121b] dark:text-white tracking-tight">$124,500</p>
+<div class="flex items-center gap-2 text-[#07883b] text-sm font-semibold">
+<span class="bg-green-100 dark:bg-green-500/20 px-2 py-0.5 rounded-lg">+12.5%</span>
+<span class="text-xs text-[#4c669a] dark:text-[#8ba3cf] font-normal">from last month</span>
+</div>
+</div>
+<div class="bg-white dark:bg-background-dark p-6 rounded-xl border border-[#e7ebf3] dark:border-white/10 shadow-sm flex flex-col gap-2 relative overflow-hidden">
+<div class="flex items-center justify-between">
+<p class="text-[#4c669a] dark:text-[#8ba3cf] text-sm font-medium uppercase tracking-wider">Real-time Online Users</p>
+<div class="flex items-center gap-1.5">
+<span class="size-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-xs font-bold text-primary uppercase">Live</span>
+</div>
+</div>
+<p class="text-3xl font-bold text-[#0d121b] dark:text-white tracking-tight">12,840</p>
+<div class="flex items-center gap-2 text-[#07883b] text-sm font-semibold">
+<span class="bg-green-100 dark:bg-green-500/20 px-2 py-0.5 rounded-lg">+5.2%</span>
+<span class="text-xs text-[#4c669a] dark:text-[#8ba3cf] font-normal">active spikes detected</span>
+</div>
+</div>
+<div class="bg-white dark:bg-background-dark p-6 rounded-xl border border-[#e7ebf3] dark:border-white/10 shadow-sm flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<p class="text-[#4c669a] dark:text-[#8ba3cf] text-sm font-medium uppercase tracking-wider">Global Node Health %</p>
+<span class="material-symbols-outlined text-orange-500">warning</span>
+</div>
+<p class="text-3xl font-bold text-[#0d121b] dark:text-white tracking-tight">98.4%</p>
+<div class="flex items-center gap-2 text-[#e73908] text-sm font-semibold">
+<span class="bg-orange-100 dark:bg-orange-500/20 px-2 py-0.5 rounded-lg">-0.1%</span>
+<span class="text-xs text-[#4c669a] dark:text-[#8ba3cf] font-normal">minor packet loss in EU</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Chart Section -->
+<div class="lg:col-span-2 bg-white dark:bg-background-dark p-8 rounded-xl border border-[#e7ebf3] dark:border-white/10 shadow-sm">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-[#0d121b] dark:text-white text-xl font-bold">Traffic &amp; Performance</h3>
+<div class="flex items-center gap-2 mt-1">
+<p class="text-3xl font-bold text-primary">4.2 TB/s</p>
+<span class="text-green-500 text-sm font-bold">+8% peak</span>
+</div>
+</div>
+<select class="bg-[#f6f6f8] dark:bg-white/5 border-none rounded-lg text-sm font-medium text-[#4c669a] dark:text-white px-4 py-2 focus:ring-1 focus:ring-primary">
+<option>Last 24 Hours</option>
+<option>Last 7 Days</option>
+<option>Real-time View</option>
+</select>
+</div>
+<div class="w-full">
+<svg class="overflow-visible" fill="none" height="240" preserveaspectratio="none" viewbox="-3 0 478 150" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25V149H326.769H0V109Z" fill="url(#paint0_linear_1131_5935)"></path>
+<path d="M0 109C18.1538 109 18.1538 21 36.3077 21C54.4615 21 54.4615 41 72.6154 41C90.7692 41 90.7692 93 108.923 93C127.077 93 127.077 33 145.231 33C163.385 33 163.385 101 181.538 101C199.692 101 199.692 61 217.846 61C236 61 236 45 254.154 45C272.308 45 272.308 121 290.462 121C308.615 121 308.615 149 326.769 149C344.923 149 344.923 1 363.077 1C381.231 1 381.231 81 399.385 81C417.538 81 417.538 129 435.692 129C453.846 129 453.846 25 472 25" stroke="#135bec" stroke-linecap="round" stroke-width="4"></path>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="paint0_linear_1131_5935" x1="236" x2="236" y1="1" y2="149">
+<stop stop-color="#135bec" stop-opacity="0.2"></stop>
+<stop offset="1" stop-color="#135bec" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="flex justify-between mt-4 px-2">
+<p class="text-[#4c669a] text-xs font-bold uppercase tracking-wider">00:00</p>
+<p class="text-[#4c669a] text-xs font-bold uppercase tracking-wider">06:00</p>
+<p class="text-[#4c669a] text-xs font-bold uppercase tracking-wider">12:00</p>
+<p class="text-[#4c669a] text-xs font-bold uppercase tracking-wider">18:00</p>
+<p class="text-[#4c669a] text-xs font-bold uppercase tracking-wider">23:59</p>
+</div>
+</div>
+</div>
+<!-- Side Panel: Recent System Events -->
+<div class="bg-white dark:bg-background-dark p-6 rounded-xl border border-[#e7ebf3] dark:border-white/10 shadow-sm flex flex-col">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-[#0d121b] dark:text-white text-lg font-bold">AI Logs</h3>
+<button class="text-primary text-sm font-bold hover:underline">View all</button>
+</div>
+<div class="flex flex-col gap-5 overflow-y-auto max-h-[400px]">
+<!-- Event Item -->
+<div class="flex gap-4">
+<div class="size-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">auto_awesome</span>
+</div>
+<div>
+<p class="text-[#0d121b] dark:text-white text-sm font-semibold leading-snug">Node #12 prioritized</p>
+<p class="text-[#4c669a] dark:text-[#8ba3cf] text-xs">Latency threshold exceeded in Tokyo. AI routing updated.</p>
+<span class="text-[10px] text-[#4c669a]/50 uppercase font-bold mt-1 inline-block">2 mins ago</span>
+</div>
+</div>
+<!-- Event Item -->
+<div class="flex gap-4">
+<div class="size-8 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-orange-600 text-sm">hub</span>
+</div>
+<div>
+<p class="text-[#0d121b] dark:text-white text-sm font-semibold leading-snug">Berlin Node offline</p>
+<p class="text-[#4c669a] dark:text-[#8ba3cf] text-xs">Unexpected downtime detected. Switching to backup cluster.</p>
+<span class="text-[10px] text-[#4c669a]/50 uppercase font-bold mt-1 inline-block">14 mins ago</span>
+</div>
+</div>
+<!-- Event Item -->
+<div class="flex gap-4">
+<div class="size-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-green-600 text-sm">shield</span>
+</div>
+<div>
+<p class="text-[#0d121b] dark:text-white text-sm font-semibold leading-snug">DDoS Attempt Blocked</p>
+<p class="text-[#4c669a] dark:text-[#8ba3cf] text-xs">AI-shield mitigated traffic spike on US-West-2.</p>
+<span class="text-[10px] text-[#4c669a]/50 uppercase font-bold mt-1 inline-block">1 hour ago</span>
+</div>
+</div>
+<!-- Event Item -->
+<div class="flex gap-4">
+<div class="size-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-sm">rocket_launch</span>
+</div>
+<div>
+<p class="text-[#0d121b] dark:text-white text-sm font-semibold leading-snug">New Protocol Deployed</p>
+<p class="text-[#4c669a] dark:text-[#8ba3cf] text-xs">WireGuard V3 rolled out to 80% of European nodes.</p>
+<span class="text-[10px] text-[#4c669a]/50 uppercase font-bold mt-1 inline-block">3 hours ago</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Global Nodes Quick View -->
+<div class="bg-white dark:bg-background-dark p-8 rounded-xl border border-[#e7ebf3] dark:border-white/10 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-[#0d121b] dark:text-white text-xl font-bold">Active Global Nodes</h3>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full">342 Online</span>
+<span class="px-3 py-1 bg-red-100 text-red-700 text-xs font-bold rounded-full">4 Maintenance</span>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+<div class="flex flex-col items-center p-4 rounded-xl border border-[#e7ebf3] dark:border-white/10 bg-gray-50 dark:bg-white/5">
+<p class="text-xs font-bold text-[#4c669a] uppercase mb-2">US-East</p>
+<p class="text-lg font-bold text-[#0d121b] dark:text-white">99%</p>
+<div class="w-full bg-gray-200 dark:bg-white/10 h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-green-500 h-full w-[99%]"></div>
+</div>
+</div>
+<div class="flex flex-col items-center p-4 rounded-xl border border-[#e7ebf3] dark:border-white/10 bg-gray-50 dark:bg-white/5">
+<p class="text-xs font-bold text-[#4c669a] uppercase mb-2">EU-London</p>
+<p class="text-lg font-bold text-[#0d121b] dark:text-white">88%</p>
+<div class="w-full bg-gray-200 dark:bg-white/10 h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-orange-400 h-full w-[88%]"></div>
+</div>
+</div>
+<div class="flex flex-col items-center p-4 rounded-xl border border-[#e7ebf3] dark:border-white/10 bg-gray-50 dark:bg-white/5">
+<p class="text-xs font-bold text-[#4c669a] uppercase mb-2">Asia-Seoul</p>
+<p class="text-lg font-bold text-[#0d121b] dark:text-white">100%</p>
+<div class="w-full bg-gray-200 dark:bg-white/10 h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-green-500 h-full w-[100%]"></div>
+</div>
+</div>
+<div class="flex flex-col items-center p-4 rounded-xl border border-[#e7ebf3] dark:border-white/10 bg-gray-50 dark:bg-white/5">
+<p class="text-xs font-bold text-[#4c669a] uppercase mb-2">US-West</p>
+<p class="text-lg font-bold text-[#0d121b] dark:text-white">94%</p>
+<div class="w-full bg-gray-200 dark:bg-white/10 h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-green-500 h-full w-[94%]"></div>
+</div>
+</div>
+<div class="flex flex-col items-center p-4 rounded-xl border border-[#e7ebf3] dark:border-white/10 bg-gray-50 dark:bg-white/5">
+<p class="text-xs font-bold text-[#4c669a] uppercase mb-2">SA-Brasil</p>
+<p class="text-lg font-bold text-[#0d121b] dark:text-white">91%</p>
+<div class="w-full bg-gray-200 dark:bg-white/10 h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-green-500 h-full w-[91%]"></div>
+</div>
+</div>
+<div class="flex flex-col items-center p-4 rounded-xl border border-[#e7ebf3] dark:border-white/10 bg-gray-50 dark:bg-white/5">
+<p class="text-xs font-bold text-[#4c669a] uppercase mb-2">AU-Sydney</p>
+<p class="text-lg font-bold text-[#0d121b] dark:text-white">99%</p>
+<div class="w-full bg-gray-200 dark:bg-white/10 h-1.5 rounded-full mt-2 overflow-hidden">
+<div class="bg-green-500 h-full w-[99%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

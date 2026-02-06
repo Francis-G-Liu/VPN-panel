@@ -1,0 +1,7 @@
+# 节点 Agent 依赖
+psutil>=5.9.8
+requests>=2.31.0
+urllib3>=2.0.0
+
+# 可选：如果想使用 python-dotenv 加载 .env 文件
+python-dotenv>=1.0.0

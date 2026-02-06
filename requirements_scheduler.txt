@@ -1,0 +1,2 @@
+# APScheduler 依赖
+apscheduler>=3.10.4

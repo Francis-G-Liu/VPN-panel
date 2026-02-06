@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Node Management &amp; AI Analysis Log</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#135bec",
+                "background-light": "#f6f6f8",
+                "background-dark": "#101622",
+              },
+              fontFamily: {
+                "display": ["Inter", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#0d121b] dark:text-white font-display">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<!-- TopNavBar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7ebf3] dark:border-b-gray-800 px-10 py-3 bg-white dark:bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-6">
+<span class="material-symbols-outlined text-3xl">hub</span>
+</div>
+<h2 class="text-[#0d121b] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">VPN Admin Console</h2>
+</div>
+<nav class="hidden md:flex items-center gap-9">
+<a class="text-[#0d121b] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-bold leading-normal" href="#">Nodes</a>
+<a class="text-[#0d121b] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Users</a>
+<a class="text-[#0d121b] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Billing</a>
+</nav>
+</div>
+<div class="flex flex-1 justify-end gap-4">
+<label class="flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full">
+<div class="text-[#4c669a] flex border-none bg-[#e7ebf3] dark:bg-gray-800 items-center justify-center pl-4 rounded-l-xl border-r-0">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-[#0d121b] dark:text-white focus:outline-0 focus:ring-0 border-none bg-[#e7ebf3] dark:bg-gray-800 focus:border-none h-full placeholder:text-[#4c669a] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search nodes..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 bg-[#e7ebf3] dark:bg-gray-800 text-[#0d121b] dark:text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5">
+<span class="material-symbols-outlined text-xl">notifications</span>
+</button>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary/20" data-alt="Admin user avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCvXRGelTGinV44b_EMTTtw6QDmmJp4rkGbTLCw8Y9IWECQgoIrHTH65epGku7UyqvKZNw6sGboKWPs_mBaf1CWXa7-BlSsZ4UyBoKtibz65JQ_sH9YjOoylrnFfXW5YjvE2tiqT1MMso_iWhyCt8jPaqgSQpjMrIpNnWKKJV2cj3sT2KUC1cq2L29B3-jdLqVP54-ZMbx_v6qD9-3YE6vafAU-yA_pf7-_wZbBs9J6LpE_Eux_X5fByMDaVPPV8gOui-hH8nyK30w");'></div>
+</div>
+</header>
+<div class="flex flex-1 gap-6 px-10 py-8">
+<!-- SideNavBar (Left) -->
+<aside class="hidden lg:flex w-64 flex-col justify-between bg-white dark:bg-background-dark p-4 rounded-xl border border-[#cfd7e7] dark:border-gray-800 shadow-sm h-fit">
+<div class="flex flex-col gap-4">
+<div class="flex gap-3 pb-4 border-b border-[#cfd7e7] dark:border-gray-800">
+<div class="bg-primary/10 flex items-center justify-center rounded-full size-10">
+<span class="material-symbols-outlined text-primary">admin_panel_settings</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-[#0d121b] dark:text-white text-sm font-bold leading-tight">Fleet Admin</h1>
+<p class="text-[#4c669a] text-xs font-normal leading-normal">v2.4.0-stable</p>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 hover:bg-background-light dark:hover:bg-gray-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary">public</span>
+<p class="text-[#0d121b] dark:text-gray-300 text-sm font-medium">Network Map</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">dns</span>
+<p class="text-sm font-bold">Node Fleet</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 hover:bg-background-light dark:hover:bg-gray-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary">psychology</span>
+<p class="text-[#0d121b] dark:text-gray-300 text-sm font-medium">AI Insights</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 hover:bg-background-light dark:hover:bg-gray-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary">monitoring</span>
+<p class="text-[#0d121b] dark:text-gray-300 text-sm font-medium">Traffic Analytics</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 hover:bg-background-light dark:hover:bg-gray-800 rounded-lg transition-colors group" href="#">
+<span class="material-symbols-outlined text-gray-500 group-hover:text-primary">encrypted</span>
+<p class="text-[#0d121b] dark:text-gray-300 text-sm font-medium">Security</p>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 flex flex-col gap-6">
+<!-- PageHeading -->
+<div class="flex flex-wrap justify-between items-center gap-3">
+<div class="flex flex-col gap-1">
+<p class="text-[#0d121b] dark:text-white text-3xl font-black leading-tight tracking-[-0.033em]">Fleet Infrastructure</p>
+<p class="text-[#4c669a] text-sm">Real-time heartbeat monitoring for global VPN nodes</p>
+</div>
+<button class="flex min-w-[140px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-11 px-6 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-blue-700 transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined mr-2 text-lg">add_circle</span>
+<span class="truncate">Add New Node</span>
+</button>
+</div>
+<!-- Table Section -->
+<div class="bg-white dark:bg-gray-900 rounded-xl border border-[#cfd7e7] dark:border-gray-800 overflow-hidden shadow-sm">
+<div class="px-6 py-4 border-b border-[#cfd7e7] dark:border-gray-800 flex justify-between items-center">
+<h3 class="font-bold text-[#0d121b] dark:text-white">Active Nodes (12)</h3>
+<div class="flex items-center gap-2">
+<span class="flex size-2 rounded-full bg-green-500"></span>
+<span class="text-xs text-[#4c669a] font-medium uppercase tracking-wider">All systems operational</span>
+</div>
+</div>
+<div class="@container overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-background-light dark:bg-gray-800/50">
+<th class="px-6 py-4 text-[#0d121b] dark:text-gray-400 text-xs font-bold uppercase tracking-wider">Node Name</th>
+<th class="px-6 py-4 text-[#0d121b] dark:text-gray-400 text-xs font-bold uppercase tracking-wider">Status</th>
+<th class="px-6 py-4 text-[#0d121b] dark:text-gray-400 text-xs font-bold uppercase tracking-wider">CPU Usage</th>
+<th class="px-6 py-4 text-[#0d121b] dark:text-gray-400 text-xs font-bold uppercase tracking-wider">Connections</th>
+<th class="px-6 py-4 text-[#0d121b] dark:text-gray-400 text-xs font-bold uppercase tracking-wider">Traffic In/Out</th>
+<th class="px-6 py-4 text-[#4c669a] text-xs font-bold uppercase tracking-wider text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-[#cfd7e7] dark:divide-gray-800">
+<tr class="hover:bg-background-light/50 dark:hover:bg-gray-800/30 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="size-2 rounded-full bg-green-500"></div>
+<span class="text-[#0d121b] dark:text-white text-sm font-semibold">US-East-01</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 border border-green-200 dark:border-green-800">Active</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-24 overflow-hidden rounded-full bg-[#cfd7e7] dark:bg-gray-700 h-1.5">
+<div class="h-full bg-primary" style="width: 17%"></div>
+</div>
+<p class="text-[#0d121b] dark:text-white text-sm font-medium">17%</p>
+</div>
+</td>
+<td class="px-6 py-5 text-[#4c669a] dark:text-gray-400 text-sm font-medium">1,240</td>
+<td class="px-6 py-5 text-[#4c669a] dark:text-gray-400 text-sm font-medium whitespace-nowrap">450MB/s <span class="text-gray-300 mx-1">/</span> 1.2GB/s</td>
+<td class="px-6 py-5 text-right">
+<button class="text-primary hover:text-blue-700 text-sm font-bold">Manage</button>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-gray-800/30 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="size-2 rounded-full bg-orange-500"></div>
+<span class="text-[#0d121b] dark:text-white text-sm font-semibold">Japan-Node-01</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-400 border border-orange-200 dark:border-orange-800">Degraded</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-24 overflow-hidden rounded-full bg-[#cfd7e7] dark:bg-gray-700 h-1.5">
+<div class="h-full bg-orange-500" style="width: 92%"></div>
+</div>
+<p class="text-[#0d121b] dark:text-white text-sm font-medium">92%</p>
+</div>
+</td>
+<td class="px-6 py-5 text-[#4c669a] dark:text-gray-400 text-sm font-medium">3,500</td>
+<td class="px-6 py-5 text-[#4c669a] dark:text-gray-400 text-sm font-medium whitespace-nowrap">1.1GB/s <span class="text-gray-300 mx-1">/</span> 2.8GB/s</td>
+<td class="px-6 py-5 text-right">
+<button class="text-primary hover:text-blue-700 text-sm font-bold">Manage</button>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-gray-800/30 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="size-2 rounded-full bg-green-500"></div>
+<span class="text-[#0d121b] dark:text-white text-sm font-semibold">UK-London-04</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 border border-green-200 dark:border-green-800">Active</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-24 overflow-hidden rounded-full bg-[#cfd7e7] dark:bg-gray-700 h-1.5">
+<div class="h-full bg-primary" style="width: 45%"></div>
+</div>
+<p class="text-[#0d121b] dark:text-white text-sm font-medium">45%</p>
+</div>
+</td>
+<td class="px-6 py-5 text-[#4c669a] dark:text-gray-400 text-sm font-medium">890</td>
+<td class="px-6 py-5 text-[#4c669a] dark:text-gray-400 text-sm font-medium whitespace-nowrap">210MB/s <span class="text-gray-300 mx-1">/</span> 500MB/s</td>
+<td class="px-6 py-5 text-right">
+<button class="text-primary hover:text-blue-700 text-sm font-bold">Manage</button>
+</td>
+</tr>
+<tr class="hover:bg-background-light/50 dark:hover:bg-gray-800/30 transition-colors">
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="size-2 rounded-full bg-green-500"></div>
+<span class="text-[#0d121b] dark:text-white text-sm font-semibold">DE-Frankfurt-02</span>
+</div>
+</td>
+<td class="px-6 py-5">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 border border-green-200 dark:border-green-800">Active</span>
+</td>
+<td class="px-6 py-5">
+<div class="flex items-center gap-3">
+<div class="w-24 overflow-hidden rounded-full bg-[#cfd7e7] dark:bg-gray-700 h-1.5">
+<div class="h-full bg-primary" style="width: 28%"></div>
+</div>
+<p class="text-[#0d121b] dark:text-white text-sm font-medium">28%</p>
+</div>
+</td>
+<td class="px-6 py-5 text-[#4c669a] dark:text-gray-400 text-sm font-medium">2,100</td>
+<td class="px-6 py-5 text-[#4c669a] dark:text-gray-400 text-sm font-medium whitespace-nowrap">600MB/s <span class="text-gray-300 mx-1">/</span> 1.5GB/s</td>
+<td class="px-6 py-5 text-right">
+<button class="text-primary hover:text-blue-700 text-sm font-bold">Manage</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+<!-- AI Dispatch Logic Panel (Right) -->
+<aside class="w-80 flex flex-col gap-4">
+<div class="bg-white dark:bg-gray-900 rounded-xl border border-[#cfd7e7] dark:border-gray-800 overflow-hidden shadow-sm h-full flex flex-col">
+<div class="p-4 bg-primary/5 border-b border-[#cfd7e7] dark:border-gray-800">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+<h2 class="text-[#0d121b] dark:text-white text-md font-bold leading-tight">AI Dispatch Logic</h2>
+<span class="ml-auto inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold uppercase bg-primary text-white">Live</span>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-4">
+<div class="flex gap-3">
+<div class="mt-1 size-2 rounded-full bg-primary flex-shrink-0 animate-pulse"></div>
+<div class="flex flex-col gap-1">
+<p class="text-xs text-[#4c669a] font-semibold">14:32:01</p>
+<p class="text-sm text-[#0d121b] dark:text-gray-200">
+<span class="font-bold text-orange-500">Japan-Node-01</span> de-prioritized: packet loss (4.2%) detected.
+                                    </p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="mt-1 size-2 rounded-full bg-green-500 flex-shrink-0"></div>
+<div class="flex flex-col gap-1">
+<p class="text-xs text-[#4c669a] font-semibold">14:30:15</p>
+<p class="text-sm text-[#0d121b] dark:text-gray-200">
+                                        Routing US traffic to <span class="font-bold text-primary">US-East-01</span>. Optimized latency: 42ms.
+                                    </p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="mt-1 size-2 rounded-full bg-blue-400 flex-shrink-0"></div>
+<div class="flex flex-col gap-1">
+<p class="text-xs text-[#4c669a] font-semibold">14:28:44</p>
+<p class="text-sm text-[#0d121b] dark:text-gray-200">
+                                        Scale-out trigger: Increased demand in EMEA region. Provisioning secondary UK node.
+                                    </p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="mt-1 size-2 rounded-full bg-gray-400 flex-shrink-0"></div>
+<div class="flex flex-col gap-1">
+<p class="text-xs text-[#4c669a] font-semibold">14:25:20</p>
+<p class="text-sm text-[#0d121b] dark:text-gray-200">
+                                        Security scrub completed for <span class="font-bold">DE-Frankfurt-02</span>. No anomalies found.
+                                    </p>
+</div>
+</div>
+<div class="flex gap-3">
+<div class="mt-1 size-2 rounded-full bg-orange-400 flex-shrink-0"></div>
+<div class="flex flex-col gap-1">
+<p class="text-xs text-[#4c669a] font-semibold">14:20:11</p>
+<p class="text-sm text-[#0d121b] dark:text-gray-200">
+                                        Load balancing anomaly: 85% utilization spike on <span class="font-bold text-orange-500">Japan-Node-01</span>.
+                                    </p>
+</div>
+</div>
+</div>
+<div class="p-4 border-t border-[#cfd7e7] dark:border-gray-800">
+<button class="w-full py-2 text-sm font-bold text-primary border border-primary/20 rounded-lg hover:bg-primary/5 transition-colors">
+                                View Full Intelligence Log
+                            </button>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</div>
+</body></html>

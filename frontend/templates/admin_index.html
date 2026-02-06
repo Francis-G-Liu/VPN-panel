@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI VPN 管理后台</title>
+    <link rel="stylesheet" href="/static/css/admin.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌐 AI VPN 管理系统</h1>
+            <p>欢迎使用 AI 驱动的 VPN 管理后台</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#dashboard">仪表板</a></li>
+                <li><a href="#users">用户管理</a></li>
+                <li><a href="#nodes">节点管理</a></li>
+                <li><a href="#metrics">监控统计</a></li>
+                <li><a href="#settings">系统设置</a></li>
+            </ul>
+        </nav>
+
+        <main id="content">
+            <section id="dashboard">
+                <h2>📊 系统仪表板</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>总用户数</h3>
+                        <p class="stat-value" id="total-users">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>活跃节点</h3>
+                        <p class="stat-value" id="total-nodes">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>当前连接</h3>
+                        <p class="stat-value" id="active-connections">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>总流量 (GB)</h3>
+                        <p class="stat-value" id="total-traffic">0</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="quick-actions">
+                <h3>快速操作</h3>
+                <button onclick="loadUsers()">加载用户列表</button>
+                <button onclick="loadNodes()">加载节点列表</button>
+                <button onclick="refreshStats()">刷新统计</button>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 AI VPN Management System v{{ version }}</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/admin.js"></script>
+</body>
+</html>
